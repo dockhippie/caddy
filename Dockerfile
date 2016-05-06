@@ -23,7 +23,7 @@ RUN apk update && \
     caddy && \
   apk add \
     build-base \
-    go@community \
+    go \
     git \
     mailcap && \
   GOPATH=/usr/local go get \
