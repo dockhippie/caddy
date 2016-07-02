@@ -3,10 +3,10 @@ MAINTAINER Thomas Boerger <thomas@webhippie.de>
 
 VOLUME ["/srv/www"]
 
-ENTRYPOINT ["/usr/bin/entrypoint"]
-CMD ["/bin/s6-svscan", "/etc/s6"]
 EXPOSE 8080
+
 WORKDIR /srv/www
+CMD ["/bin/s6-svscan", "/etc/s6"]
 
 RUN apk update && \
   mkdir -p \
@@ -22,35 +22,10 @@ RUN apk update && \
     -m \
     caddy && \
   apk add \
-    build-base \
-    go \
-    git \
+    caddy \
     mailcap && \
-  GOPATH=/usr/local go get \
-    github.com/mholt/caddy && \
-  GOPATH=/usr/local go get \
-    github.com/caddyserver/caddyext && \
-  caddyext install \
-    cors && \
-  caddyext install \
-    git && \
-  caddyext install \
-    hugo && \
-  caddyext install \
-    ipfilter && \
-  caddyext install \
-    jsonp && \
-  caddyext install \
-    search && \
-  GOPATH=/usr/local go build \
-    -o /usr/bin/caddy \
-    github.com/mholt/caddy && \
-  apk del \
-    build-base \
-    go \
-    git && \
   rm -rf \
     /var/cache/apk/* \
-    /usr/local/*
+    /etc/caddy/*
 
 ADD rootfs /
