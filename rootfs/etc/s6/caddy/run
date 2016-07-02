@@ -20,6 +20,8 @@ STARTCMD="/usr/sbin/caddy -conf=/etc/caddy/caddyfile"
 [[ -n "${CADDY_HTTP2}" ]] && STARTCMD="${STARTCMD} -http2=${CADDY_HTTP2}"
 [[ -n "${CADDY_QUIET}" ]] && STARTCMD="${STARTCMD} -quiet=${CADDY_QUIET}"
 
+pushd /srv/www > /dev/null
 exec /usr/bin/gosu \
   caddy \
   ${STARTCMD}
+popd > /dev/null
