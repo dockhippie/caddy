@@ -25,5 +25,4 @@ then
   /bin/s6-svscanctl -t /etc/s6
 fi
 
-chown -R caddy:caddy \
-  /srv/www
+find /srv/www \( \! -user caddy -o \! -group caddy \) -print0 | xargs -0 chown caddy:caddy
