@@ -7,6 +7,7 @@ declare -x CADDY_EMAIL
 declare -x CADDY_GRACE
 declare -x CADDY_HTTP2
 declare -x CADDY_QUIET
+declare -x CADDY_WEBROOT
 
 [[ -z "${CADDY_AGREE}" ]] && CADDY_AGREE="false"
 [[ -z "${CADDY_CA}" ]] && CADDY_CA="https://acme-v01.api.letsencrypt.org/directory"
@@ -15,6 +16,7 @@ declare -x CADDY_QUIET
 [[ -z "${CADDY_GRACE}" ]] && CADDY_GRACE="5s"
 [[ -z "${CADDY_HTTP2}" ]] && CADDY_HTTP2="true"
 [[ -z "${CADDY_QUIET}" ]] && CADDY_QUIET="false"
+[[ -z "${CADDY_WEBROOT}" ]] && CADDY_WEBROOT="/srv/www"
 
 /usr/bin/templater -d -p caddy \
   -o /etc/caddy/caddyfile \
