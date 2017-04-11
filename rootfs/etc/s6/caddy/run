@@ -10,15 +10,19 @@ then
   source ./custom
 fi
 
-for FILE in custom.d/*.sh
-do
-  source ${FILE}
-done
+if [ -d ./custom.d ]
+then
+  for FILE in ./custom.d/*.sh
+  do
+    source ${FILE}
+  done
+fi
 
 STARTCMD="/usr/sbin/caddy -conf=/etc/caddy/caddyfile"
 
 [[ -n "${CADDY_AGREE}" ]] && STARTCMD="${STARTCMD} -agree=${CADDY_AGREE}"
 [[ -n "${CADDY_CA}" ]] && STARTCMD="${STARTCMD} -ca=${CADDY_CA}"
+[[ -n "${CADDY_CA_TIMEOUT}" ]] && STARTCMD="${STARTCMD} -catimeout=${CADDY_CA_TIMEOUT}"
 [[ -n "${CADDY_CPU}" ]] && STARTCMD="${STARTCMD} -cpu=${CADDY_CPU}"
 [[ -n "${CADDY_EMAIL}" ]] && STARTCMD="${STARTCMD} -email=${CADDY_EMAIL}"
 [[ -n "${CADDY_GRACE}" ]] && STARTCMD="${STARTCMD} -grace=${CADDY_GRACE}"
@@ -26,7 +30,5 @@ STARTCMD="/usr/sbin/caddy -conf=/etc/caddy/caddyfile"
 [[ -n "${CADDY_QUIET}" ]] && STARTCMD="${STARTCMD} -quiet=${CADDY_QUIET}"
 
 pushd /srv/www > /dev/null
-exec su-exec \
-  caddy \
-  ${STARTCMD}
+  exec su-exec caddy ${STARTCMD}
 popd > /dev/null
