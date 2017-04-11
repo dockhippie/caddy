@@ -12,7 +12,7 @@ fi
 
 if [ -d ./custom.d ]
 then
-  for FILE in ./custom.d/*.sh
+  for FILE in $(find ./custom.d -type f -iname *.sh | sort)
   do
     source ${FILE}
   done
@@ -30,5 +30,6 @@ STARTCMD="/usr/sbin/caddy -conf=/etc/caddy/caddyfile"
 [[ -n "${CADDY_QUIET}" ]] && STARTCMD="${STARTCMD} -quiet=${CADDY_QUIET}"
 
 pushd /srv/www > /dev/null
+  echo "> starting caddy"
   exec su-exec caddy ${STARTCMD}
 popd > /dev/null

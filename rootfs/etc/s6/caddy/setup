@@ -1,6 +1,7 @@
 #!/bin/bash
 source /usr/local/bin/entrypoint
 
+echo "> writing caddy config"
 /usr/bin/templater -d -p caddy \
   -o /etc/caddy/caddyfile \
   /etc/templates/caddyfile.tmpl
@@ -8,6 +9,8 @@ source /usr/local/bin/entrypoint
 if [[ $? -ne 0 ]]
 then
   /bin/s6-svscanctl -t /etc/s6
+  exit 1
 fi
 
-find /srv/www \( \! -user caddy -o \! -group caddy \) -print0 | xargs -0 chown caddy:caddy
+echo "> chown files"
+find /srv/www \( \! -user caddy -o \! -group caddy \) -print0 | xargs -0 -r chown caddy:caddy
