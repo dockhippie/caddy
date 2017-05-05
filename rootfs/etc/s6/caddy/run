@@ -30,6 +30,6 @@ STARTCMD="/usr/sbin/caddy -conf=/etc/caddy/caddyfile"
 [[ -n "${CADDY_QUIET}" ]] && STARTCMD="${STARTCMD} -quiet=${CADDY_QUIET}"
 
 pushd /srv/www > /dev/null
-  echo "> starting caddy"
+  echo "> starting caddy service"
   exec su-exec caddy ${STARTCMD}
 popd > /dev/null
