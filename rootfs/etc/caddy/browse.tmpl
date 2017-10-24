@@ -55,13 +55,13 @@
 
 		<div class="container-fluid">
 			<ol class="breadcrumb">
-				{{ range $url, $name := .BreadcrumbMap }}
+				{{ range .Breadcrumbs }}
 					<li>
-						<a href="{{ html $url }}">
-							{{ if eq $url "/" }}
+						<a href="{{ html .Link }}">
+							{{ if eq .Text "/" }}
 								<span class="glyphicon glyphicon-home" aria-hidden="true"></span>
 							{{ else }}
-								{{ html $name }}
+								{{ html .Text }}
 							{{ end }}
 						</a>
 					</li>
