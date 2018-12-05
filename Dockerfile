@@ -1,5 +1,10 @@
 FROM webhippie/alpine:latest
-MAINTAINER Thomas Boerger <thomas@webhippie.de>
+
+LABEL maintainer="Thomas Boerger <thomas@webhippie.de>" \
+  org.label-schema.name="Caddy" \
+  org.label-schema.vcs-url="https://github.com/dockhippie/caddy.git" \
+  org.label-schema.vendor="Thomas Boerger" \
+  org.label-schema.schema-version="1.0"
 
 EXPOSE 8080
 
@@ -8,6 +13,7 @@ ENTRYPOINT ["/usr/bin/entrypoint"]
 CMD ["/bin/s6-svscan", "/etc/s6"]
 
 RUN apk update && \
+  apk upgrade && \
   mkdir -p \
     /srv/www && \
   groupadd \
@@ -28,15 +34,3 @@ RUN apk update && \
     /etc/caddy/*
 
 ADD rootfs /
-
-ARG VERSION
-ARG BUILD_DATE
-ARG VCS_REF
-
-LABEL org.label-schema.version=$VERSION
-LABEL org.label-schema.build-date=$BUILD_DATE
-LABEL org.label-schema.vcs-ref=$VCS_REF
-LABEL org.label-schema.vcs-url="https://github.com/dockhippie/caddy.git"
-LABEL org.label-schema.name="Caddy"
-LABEL org.label-schema.vendor="Thomas Boerger"
-LABEL org.label-schema.schema-version="1.0"

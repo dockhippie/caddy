@@ -1,14 +1,20 @@
 #!/bin/bash
 source /usr/bin/entrypoint
 
-echo "> writing caddy config"
-/usr/bin/templater -d -p caddy -o /etc/caddy/caddyfile /etc/templates/caddyfile.tmpl
-
-if [[ $? -ne 0 ]]
+if [[ "${CADDY_SKIP_TEMPLATES}" != "true" ]]
 then
-  /bin/s6-svscanctl -t /etc/s6
-  exit 1
+  echo "> writing caddy config"
+  /usr/bin/templater -d -p caddy -o ${CADDY_CONFIG} /etc/templates/caddyfile.tmpl
+
+  if [[ $? -ne 0 ]]
+  then
+    /bin/s6-svscanctl -t /etc/s6
+    exit 1
+  fi
 fi
 
-echo "> chown webroot files"
-find ${CADDY_WEBROOT} \( \! -user caddy -o \! -group caddy \) -print0 | xargs -0 -r chown caddy:caddy
+if [[ "${CADDY_SKIP_CHOWN}" != "true" ]]
+then
+  echo "> chown webroot files"
+  find ${CADDY_WEBROOT} \( \! -user caddy -o \! -group caddy \) -print0 | xargs -0 -r chown caddy:caddy
+fi

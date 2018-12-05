@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+declare -x CADDY_CONFIG
+[[ -z "${CADDY_CONFIG}" ]] && CADDY_CONFIG="/etc/caddy/caddyfile"
+
 declare -x CADDY_AGREE
 [[ -z "${CADDY_AGREE}" ]] && CADDY_AGREE="false"
 
@@ -26,3 +29,15 @@ declare -x CADDY_QUIET
 
 declare -x CADDY_WEBROOT
 [[ -z "${CADDY_WEBROOT}" ]] && CADDY_WEBROOT="/srv/www"
+
+declare -x CADDY_SKIP_TEMPLATES
+[[ -z "${CADDY_SKIP_TEMPLATES}" ]] && CADDY_SKIP_TEMPLATES="false"
+
+declare -x CADDY_SKIP_CHOWN
+[[ -z "${CADDY_SKIP_CHOWN}" ]] && CADDY_SKIP_CHOWN="false"
+
+declare -x CADDY_HEALTHCHECK_URL
+[[ -z "${CADDY_HEALTHCHECK_URL}" ]] && CADDY_HEALTHCHECK_URL="http://localhost:8080/"
+
+declare -x CADDY_HEALTHCHECK_CODE
+[[ -z "${CADDY_HEALTHCHECK_CODE}" ]] && CADDY_HEALTHCHECK_CODE="200"

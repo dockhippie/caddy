@@ -18,8 +18,9 @@ then
   done
 fi
 
-STARTCMD="/usr/sbin/caddy -conf=/etc/caddy/caddyfile"
+STARTCMD="/usr/sbin/caddy"
 
+[[ -n "${CADDY_CONFIG}" ]] && STARTCMD="${STARTCMD} -conf=${CADDY_CONFIG}"
 [[ -n "${CADDY_AGREE}" ]] && STARTCMD="${STARTCMD} -agree=${CADDY_AGREE}"
 [[ -n "${CADDY_CA}" ]] && STARTCMD="${STARTCMD} -ca=${CADDY_CA}"
 [[ -n "${CADDY_CA_TIMEOUT}" ]] && STARTCMD="${STARTCMD} -catimeout=${CADDY_CA_TIMEOUT}"
@@ -29,7 +30,7 @@ STARTCMD="/usr/sbin/caddy -conf=/etc/caddy/caddyfile"
 [[ -n "${CADDY_HTTP2}" ]] && STARTCMD="${STARTCMD} -http2=${CADDY_HTTP2}"
 [[ -n "${CADDY_QUIET}" ]] && STARTCMD="${STARTCMD} -quiet=${CADDY_QUIET}"
 
-pushd /srv/www > /dev/null
+pushd ${CADDY_WEBROOT} > /dev/null
   echo "> starting caddy service"
   exec su-exec caddy ${STARTCMD}
 popd > /dev/null
