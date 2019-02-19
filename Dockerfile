@@ -1,3 +1,6 @@
+FROM webhippie/alpine:latest as download
+RUN curl -sSL -o- "https://caddyserver.com/download/linux/amd64?plugins=http.jwt,http.login,http.prometheus,http.realip,http.restic,http.s3browser&license=personal&telemetry=off" | tar -xvz -C /tmp
+
 FROM webhippie/alpine:latest
 
 LABEL maintainer="Thomas Boerger <thomas@webhippie.de>" \
@@ -27,10 +30,9 @@ RUN apk update && \
     -M \
     caddy && \
   apk add \
-    caddy \
     mailcap && \
   rm -rf \
-    /var/cache/apk/* \
-    /etc/caddy/*
+    /var/cache/apk/*
 
+COPY --from=download /tmp/caddy /usr/bin/caddy
 ADD rootfs /
