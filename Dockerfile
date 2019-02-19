@@ -34,5 +34,5 @@ RUN apk update && \
   rm -rf \
     /var/cache/apk/*
 
-COPY --from=download /tmp/caddy /usr/bin/caddy
+COPY --from=download /tmp/caddy /usr/sbin/caddy
 ADD rootfs /
