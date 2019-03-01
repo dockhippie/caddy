@@ -1,5 +1,6 @@
 # Caddy
 
+[![Build Status](https://cloud.drone.io/api/badges/dockhippie/caddy/status.svg)](https://cloud.drone.io/dockhippie/caddy)
 [![](https://images.microbadger.com/badges/image/webhippie/caddy.svg)](https://microbadger.com/images/webhippie/caddy "Get your own image badge on microbadger.com")
 
 These are docker images for [Caddy](https://caddyserver.com) running on an [Alpine Linux container](https://registry.hub.docker.com/u/webhippie/alpine/).
@@ -7,7 +8,7 @@ These are docker images for [Caddy](https://caddyserver.com) running on an [Alpi
 
 ## Versions
 
-To get an overview about the available versions please take a look at the [GitHub branches](https://github.com/dockhippie/caddy/branches/all) or our [Docker Hub tags](https://hub.docker.com/r/webhippie/caddy/tags/), these lists are always up to date.
+* [latest](./latest) available as `webhippie/caddy:latest`
 
 
 ## Volumes
