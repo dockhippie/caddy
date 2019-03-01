@@ -1,0 +1,19 @@
+image: webhippie/caddy:latest
+manifests:
+  -
+    image: webhippie/caddy:latest-amd64
+    platform:
+      architecture: amd64
+      os: linux
+  -
+    image: webhippie/caddy:latest-arm64v8
+    platform:
+      architecture: arm64
+      os: linux
+      variant: v8
+  -
+    image: webhippie/caddy:latest-arm32v6
+    platform:
+      architecture: arm
+      os: linux
+      variant: v6

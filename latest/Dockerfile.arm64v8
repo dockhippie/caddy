@@ -1,7 +1,7 @@
-FROM webhippie/alpine:latest as download
-RUN curl -sSL -o- "https://caddyserver.com/download/linux/amd64?plugins=http.jwt,http.login,http.prometheus,http.realip,http.restic,http.s3browser&license=personal&telemetry=off" | tar -xvz -C /tmp
+FROM webhippie/alpine:latest-arm64v8 as download
+RUN curl -sSL -o- "https://caddyserver.com/download/linux/arm64?plugins=http.jwt,http.login,http.prometheus,http.realip,http.restic,http.s3browser&license=personal&telemetry=off" | tar -xvz -C /tmp
 
-FROM webhippie/alpine:latest
+FROM webhippie/alpine:latest-arm64v8
 
 LABEL maintainer="Thomas Boerger <thomas@webhippie.de>" \
   org.label-schema.name="Caddy" \
@@ -35,4 +35,4 @@ RUN apk update && \
     /var/cache/apk/*
 
 COPY --from=download /tmp/caddy /usr/sbin/caddy
-ADD rootfs /
+COPY ./overlay ./overlay-arm64v8 /
