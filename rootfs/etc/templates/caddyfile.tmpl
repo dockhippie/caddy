@@ -1,5 +1,5 @@
 :8080
-root {{ envString "WEBROOT" }}
+root {{ getenv "CADDY_WEBROOT" }}
 
 browse / /etc/caddy/browse.tmpl
 
