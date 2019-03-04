@@ -17,22 +17,11 @@ CMD ["/bin/s6-svscan", "/etc/s6"]
 
 RUN apk update && \
   apk upgrade && \
-  mkdir -p \
-    /srv/www && \
-  groupadd \
-    -g 1000 \
-    caddy && \
-  useradd \
-    -u 1000 \
-    -d /srv/www \
-    -g caddy \
-    -s /bin/bash \
-    -M \
-    caddy && \
-  apk add \
-    mailcap && \
-  rm -rf \
-    /var/cache/apk/*
+  mkdir -p /srv/www && \
+  groupadd -g 1000 caddy && \
+  useradd -u 1000 -d /srv/www -g caddy -s /bin/bash -M caddy && \
+  apk add mailcap && \
+  rm -rf /var/cache/apk/*
 
 COPY --from=download /tmp/caddy /usr/sbin/caddy
 COPY ./overlay ./overlay-arm32v6 /
