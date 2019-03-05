@@ -1,7 +1,7 @@
-FROM webhippie/alpine:latest@sha256:b469df22825172f94b3d8142dd687ac3fc8a6e7d79ac398c02baa9e86350587d as download
+FROM webhippie/alpine:latest@sha256:d36a8c2be25705ba06c33bb67a14a721ae0036c30f5a13d0b83b0210c953f66b as download
 RUN curl -sSL -o- "https://caddyserver.com/download/linux/amd64?plugins=http.jwt,http.login,http.prometheus,http.realip,http.restic,http.s3browser&license=personal&telemetry=off" | tar -xvz -C /tmp
 
-FROM webhippie/alpine:latest@sha256:b469df22825172f94b3d8142dd687ac3fc8a6e7d79ac398c02baa9e86350587d
+FROM webhippie/alpine:latest@sha256:d36a8c2be25705ba06c33bb67a14a721ae0036c30f5a13d0b83b0210c953f66b
 
 LABEL maintainer="Thomas Boerger <thomas@webhippie.de>" \
   org.label-schema.name="Caddy" \
