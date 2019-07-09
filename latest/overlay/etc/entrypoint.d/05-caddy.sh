@@ -33,6 +33,9 @@ declare -x CADDY_EMAIL
 declare -x CADDY_ENV
 [[ -z "${CADDY_ENV}" ]] && CADDY_ENV=""
 
+declare -x CADDY_ENVFILE
+[[ -z "${CADDY_ENVFILE}" ]] && CADDY_ENVFILE=""
+
 declare -x CADDY_GRACE
 [[ -z "${CADDY_GRACE}" ]] && CADDY_GRACE=""
 
@@ -56,6 +59,9 @@ declare -x CADDY_LOG_ROLL_COMPRESS
 
 declare -x CADDY_LOG_ROLL_MB
 [[ -z "${CADDY_LOG_ROLL_MB}" ]] && CADDY_LOG_ROLL_MB=""
+
+declare -x CADDY_PIDFILE
+[[ -z "${CADDY_PIDFILE}" ]] && CADDY_PIDFILE=""
 
 declare -x CADDY_PORT
 [[ -z "${CADDY_PORT}" ]] && CADDY_PORT=""
