@@ -1,0 +1,7 @@
+:8080
+root /srv/www
+
+browse / /etc/caddy/browse.tmpl
+
+log stdout
+errors stderr

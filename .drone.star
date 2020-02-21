@@ -12,6 +12,10 @@ def main(ctx):
         'path': 'latest',
         'tag': 'latest',
       },
+      {
+        'path': 'v1.0',
+        'tag': '1.0',
+      },
     ],
     'trigger': [
       'dockhippie/php-caddy@master',
