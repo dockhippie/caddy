@@ -1,0 +1,7 @@
+:8080
+root {{ getenv "CADDY_WEBROOT" }}
+
+browse / /etc/caddy/browse.tmpl
+
+log stdout
+errors stderr

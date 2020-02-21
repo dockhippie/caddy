@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+source /usr/bin/entrypoint
+
+CHECK="$(curl -sL -w %{http_code} -o /dev/null ${CADDY_HEALTHCHECK_URL})"
+
+if [[ "${CHECK}" == "${CADDY_HEALTHCHECK_CODE}" ]]
+then
+  exit 0
+fi
+
+exit 1
