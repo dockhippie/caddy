@@ -1,5 +1,8 @@
 FROM webhippie/golang:1.16-amd64 as build
 
+# renovate: datasource=github-releases depName=caddyserver/caddy
+ENV CADDY_VERSION=2.4.5
+
 # renovate: datasource=github-releases depName=caddyserver/xcaddy
 ENV XCADDY_VERSION=0.1.9
 
@@ -10,7 +13,7 @@ ENV REALIP_VERSION=v1.5.2
 ENV JWT_VERSION=v0.5.0
 
 RUN curl -sSLo - https://github.com/caddyserver/xcaddy/releases/download/v${XCADDY_VERSION}/xcaddy_${XCADDY_VERSION}_linux_amd64.tar.gz | tar -xvz -C /tmp && \
-  /tmp/xcaddy build \
+  /tmp/xcaddy build v${CADDY_VERSION} \
     --with github.com/kirsch33/realip@${REALIP_VERSION} \
     --with github.com/ggicci/caddy-jwt@${JWT_VERSION} \
     --with github.com/techknowlogick/caddy-s3browser

@@ -1,4 +1,4 @@
-FROM webhippie/golang:1.16-amd64 as build
+FROM webhippie/golang:1.16-arm as build
 
 # renovate: datasource=github-releases depName=caddyserver/xcaddy
 ENV XCADDY_VERSION=0.1.9
@@ -15,7 +15,7 @@ RUN curl -sSLo - https://github.com/caddyserver/xcaddy/releases/download/v${XCAD
     --with github.com/ggicci/caddy-jwt@${JWT_VERSION} \
     --with github.com/techknowlogick/caddy-s3browser
 
-FROM webhippie/alpine:latest-amd64
+FROM webhippie/alpine:latest-arm
 
 EXPOSE 8080
 
