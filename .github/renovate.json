@@ -10,6 +10,21 @@
     ],
     "packageRules": [
         {
+            "description": "Disable golang docker images",
+            "datasources": [
+                "docker"
+            ],
+            "updateTypes": [
+                "major",
+                "minor"
+            ],
+            "enabled": false,
+            "automerge": false,
+            "matchPaths": [
+                "v1.0/Dockerfile.*"
+            ]
+        },
+        {
             "description": "Update golang docker images",
             "datasources": [
                 "docker"
@@ -22,20 +37,38 @@
             "automerge": true
         },
         {
+            "description": "Disable tags for version folder",
+            "datasources": [
+                "github-tags",
+                "github-releases"
+            ],
+            "updateTypes": [
+                "major",
+                "minor"
+            ],
+            "enabled": false,
+            "automerge": false,
+            "matchPackageNames": [
+                "caddyserver/caddy"
+            ]
+        },
+        {
             "description": "Update tags without merge",
             "datasources": [
-                "github-tags"
+                "github-tags",
+                "github-releases"
             ],
             "updateTypes": [
                 "major"
             ],
-            "enabled": false,
+            "enabled": true,
             "automerge": false
         },
         {
             "description": "Update tags without merge",
             "datasources": [
-                "github-tags"
+                "github-tags",
+                "github-releases"
             ],
             "updateTypes": [
                 "minor",
