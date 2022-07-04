@@ -12,8 +12,7 @@ ENV GOPKG_VERSION=v1.2.0
 RUN curl -sSLo - https://github.com/caddyserver/xcaddy/releases/download/v${XCADDY_VERSION}/xcaddy_${XCADDY_VERSION}_linux_arm64.tar.gz | tar -xvz -C /tmp && \
   /tmp/xcaddy build \
     --with github.com/ggicci/caddy-jwt@${JWT_VERSION} \
-    --with magnax.ca/caddy/gopkg@${GOPKG_VERSION} \
-    --with github.com/techknowlogick/caddy-s3browser@main
+    --with magnax.ca/caddy/gopkg@${GOPKG_VERSION}
 
 FROM webhippie/alpine:latest-arm64
 
