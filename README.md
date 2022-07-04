@@ -1,20 +1,23 @@
 # caddy
 
-[![Docker Build](https://github.com/dockhippie/caddy/workflows/docker/badge.svg)](https://github.com/dockhippie/caddy/actions?query=workflow%3Adocker) [![Readme Build](https://github.com/dockhippie/caddy/workflows/readme/badge.svg)](https://github.com/dockhippie/caddy/actions?query=workflow%3Areadme) [![Docker Size](https://img.shields.io/docker/image-size/webhippie/caddy/latest)](#) [![Docker Pulls](https://img.shields.io/docker/pulls/webhippie/caddy)](https://hub.docker.com/r/webhippie/caddy) [![GitHub Repo](https://img.shields.io/badge/github-repo-yellowgreen)](https://github.com/dockhippie/caddy)
+[![Docker Build](https://github.com/dockhippie/caddy/actions/workflows/docker.yml/badge.svg)](https://github.com/dockhippie/caddy/actions/workflows/docker.yml) [![GitHub Repo](https://img.shields.io/badge/github-repo-yellowgreen)](https://github.com/dockhippie/caddy)
 
-These are docker images for [Caddy](https://caddyserver.com) running on our [Alpine Linux image](https://github.com/dockhippie/alpine).
+These are docker images for [Caddy][upstream] running on our
+[Alpine Linux image][parent].
 
 ## Versions
 
-For the available versions please look at [Docker Hub](https://hub.docker.com/r/webhippie/caddy/tags) or [Quay](https://quay.io/repository/webhippie/caddy?tab=tags) or check the existing folders within the [GitHub repository](https://github.com/dockhippie/caddy).
+For the available versions please look at [Docker Hub][dockerhub] or
+[Quay][quayio] or check the existing folders within the
+[GitHub repository][github].
 
 ## Volumes
 
-* /srv/www
+*  /srv/www
 
 ## Ports
 
-* 8080
+*  8080
 
 ## Available environment variables
 
@@ -77,3 +80,9 @@ MIT
 ```console
 Copyright (c) 2018 Thomas Boerger <http://www.webhippie.de>
 ```
+
+[upstream]: https://caddyserver.com
+[parent]: https://github.com/dockhippie/alpine
+[dockerhub]: https://hub.docker.com/r/webhippie/caddy/tags
+[quayio]: https://quay.io/repository/webhippie/caddy?tab=tags
+[github]: https://github.com/dockhippie/caddy

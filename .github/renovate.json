@@ -22,25 +22,23 @@
             "automerge": true
         },
         {
-            "description": "Disable version tag updates",
+            "description": "Update tags without merge",
             "datasources": [
-                "github-tags",
-                "github-releases"
+                "github-tags"
             ],
             "updateTypes": [
-                "major",
-                "minor"
+                "major"
             ],
             "enabled": false,
             "automerge": false
         },
         {
-            "description": "Enable version tag updates",
+            "description": "Update tags without merge",
             "datasources": [
-                "github-tags",
-                "github-releases"
+                "github-tags"
             ],
             "updateTypes": [
+                "minor",
                 "patch"
             ],
             "enabled": true,

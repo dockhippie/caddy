@@ -1,7 +1,7 @@
 FROM webhippie/golang:1.18-amd64 as build
 
 # renovate: datasource=github-releases depName=caddyserver/caddy
-ENV CADDY_VERSION=2.4.6
+ENV CADDY_VERSION=2.5.1
 
 # renovate: datasource=github-releases depName=caddyserver/xcaddy
 ENV XCADDY_VERSION=0.3.0
