@@ -1,4 +1,4 @@
-FROM webhippie/golang:1.14-amd64 as build
+FROM webhippie/golang:1.15-amd64 as build
 
 COPY ./build /
 
