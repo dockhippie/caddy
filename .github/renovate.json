@@ -20,8 +20,8 @@
             ],
             "enabled": false,
             "automerge": false,
-            "matchPaths": [
-                "v1.0/Dockerfile.*"
+            "matchPackageNames": [
+                "webhippie/golang"
             ]
         },
         {
