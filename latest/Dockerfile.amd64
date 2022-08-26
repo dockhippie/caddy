@@ -1,7 +1,7 @@
 FROM webhippie/golang:1.18-amd64@sha256:4bbda7b0503c5e955fd97330b0d1479b2541e6d18c1c0166a798e80bba172663 as build
 
 # renovate: datasource=github-releases depName=caddyserver/xcaddy
-ENV XCADDY_VERSION=0.3.0
+ENV XCADDY_VERSION=0.3.1
 
 # renovate: datasource=github-tags depName=ggicci/caddy-jwt
 ENV JWT_VERSION=v0.7.1
