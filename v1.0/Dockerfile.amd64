@@ -1,4 +1,4 @@
-FROM webhippie/golang:1.15-amd64@sha256:cedc910d24a31e13b86d2a55b712ac8c933d53a2de5557a029385c249da67904 as build
+FROM webhippie/golang:1.15-amd64@sha256:77b82be56246ac75255a953b87b0554f73ac192fe6b12097a19a272679f3c9be as build
 
 COPY ./build /
 
@@ -8,7 +8,7 @@ RUN cd /srv/app/caddy && \
   go get ./... && \
   go install
 
-FROM webhippie/alpine:latest-amd64@sha256:4306b1ddc97e09a6f985406eb280b95f940f784a9379fd8d6efd563b372ccac8
+FROM webhippie/alpine:latest-amd64@sha256:afb313810b27659cbe5a1bc7aa94bd35448a750d194eedae3b043cef3f6ff87a
 
 EXPOSE 8080
 
