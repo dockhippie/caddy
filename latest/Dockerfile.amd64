@@ -1,4 +1,4 @@
-FROM webhippie/golang:1.18-amd64@sha256:01842fb3f11a437e691a82a1519b01910626eed537f4a8d0ceabe9a4e3070584 as build
+FROM webhippie/golang:1.18-amd64@sha256:3d1d2487abe667fd24f2aac765be5bd07fa200c0bf80802ef48be5f0f8bd2ed1 as build
 
 # renovate: datasource=github-releases depName=caddyserver/xcaddy
 ENV XCADDY_VERSION=0.3.1
