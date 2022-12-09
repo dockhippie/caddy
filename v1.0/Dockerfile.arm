@@ -1,4 +1,4 @@
-FROM webhippie/golang:1.15-arm@sha256:9ba75c8f34398e273d22c5d3312f0b1bff6aaa386cb26e1421a3baa8d11a5b55 as build
+FROM webhippie/golang:1.15-arm@sha256:7f3104ed1b7b4842a46dbb0f16c691c178a5734fde6739effd1cea4144f953d4 as build
 
 COPY ./build /
 
