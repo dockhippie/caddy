@@ -4,7 +4,7 @@ FROM webhippie/golang:1.18-amd64@sha256:7f49544c56bb3a947894d3134ccceadc5d1626f7
 ENV CADDY_VERSION=2.5.2
 
 # renovate: datasource=github-releases depName=caddyserver/xcaddy
-ENV XCADDY_VERSION=0.3.1
+ENV XCADDY_VERSION=0.3.2
 
 # renovate: datasource=github-tags depName=ggicci/caddy-jwt
 ENV JWT_VERSION=v0.8.0
