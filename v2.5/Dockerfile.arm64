@@ -1,4 +1,4 @@
-FROM webhippie/golang:1.18-arm64@sha256:7700db0a4502cbf272ea11766a14d9f00997853f1b742bd99c5f02c829a939d3 as build
+FROM webhippie/golang:1.20-arm64 as build
 
 # renovate: datasource=github-releases depName=caddyserver/caddy
 ENV CADDY_VERSION=2.5.2
