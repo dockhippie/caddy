@@ -28,9 +28,9 @@
             "automerge": true
         },
         {
-            "description": "Disable golang docker images",
+            "description": "Update tags without merge",
             "datasources": [
-                "docker"
+                "github-releases"
             ],
             "updateTypes": [
                 "major",
@@ -39,46 +39,19 @@
             "enabled": false,
             "automerge": false,
             "matchPackageNames": [
-                "webhippie/golang"
+                "caddyserver/caddy"
             ]
         },
         {
             "description": "Update tags without merge",
             "datasources": [
-                "github-tags",
                 "github-releases"
             ],
             "updateTypes": [
-                "major"
-            ],
-            "enabled": true,
-            "automerge": false
-        },
-        {
-            "description": "Update tags without merge",
-            "datasources": [
-                "github-tags",
-                "github-releases"
-            ],
-            "updateTypes": [
-                "minor",
                 "patch"
             ],
             "enabled": true,
-            "automerge": true
-        },
-        {
-            "description": "Disable tags for version folder",
-            "datasources": [
-                "github-tags",
-                "github-releases"
-            ],
-            "updateTypes": [
-                "major",
-                "minor"
-            ],
-            "enabled": false,
-            "automerge": false,
+            "automerge": true,
             "matchPackageNames": [
                 "caddyserver/caddy"
             ]
