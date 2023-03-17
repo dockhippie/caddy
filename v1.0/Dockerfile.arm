@@ -1,4 +1,4 @@
-FROM webhippie/golang:1.20-arm@sha256:ecaeecac2ae58a35322b1d88c485f7f71b342b0c0746a600c01442891bc2b960 as build
+FROM webhippie/golang:1.20-arm@sha256:171a7035175697ef8558b68bb2e74531e2e35a0ad7931ce7deca935b0f78ee23 as build
 
 COPY ./build /
 
@@ -8,7 +8,7 @@ RUN cd /srv/app/caddy && \
   go get ./... && \
   go install
 
-FROM webhippie/alpine:latest-arm@sha256:32467a2ff4b60671a770a2cce2051aa5ec13cfc41419ebab246ea97db8a4eb50
+FROM webhippie/alpine:latest-arm@sha256:99ec4c02eb520d5cabdcba4bf7dab807b3a2c3392a25fd86c0818565fa3623a7
 
 EXPOSE 8080
 
