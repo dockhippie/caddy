@@ -56,5 +56,8 @@
                 "caddyserver/caddy"
             ]
         }
+    ],
+    "ignoreDeps": [
+        "docker/build-push-action"
     ]
 }
