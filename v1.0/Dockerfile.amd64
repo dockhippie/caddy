@@ -1,4 +1,4 @@
-FROM ghcr.io/dockhippie/golang:1.20-amd64@sha256:8319bc998169c24e6be4ece2f3367781b477566350b3528532d36b17746abcf4 AS build
+FROM ghcr.io/dockhippie/golang:1.20-amd64@sha256:c0fd4e1f1e09eb4fc9d3df72b11ae459127867e733d710435b07eccefb91bb74 AS build
 
 COPY ./build /
 
