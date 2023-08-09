@@ -1,0 +1,36 @@
+FROM ghcr.io/dockhippie/golang:1.20-arm@sha256:fe2fc89810395055f3c28b03cb609cb0d663b6354d11b34ba48680ebb4552cd8 AS build
+
+# renovate: datasource=github-releases depName=caddyserver/caddy
+ENV CADDY_VERSION=2.7.3
+
+# renovate: datasource=github-releases depName=caddyserver/xcaddy
+ENV XCADDY_VERSION=0.3.5
+
+# renovate: datasource=github-tags depName=ggicci/caddy-jwt
+ENV JWT_VERSION=v0.9.1
+
+# renovate: datasource=github-tags depName=MagnaXSoftware/gopkg
+ENV GOPKG_VERSION=v1.2.0
+
+RUN curl -sSLo - https://github.com/caddyserver/xcaddy/releases/download/v${XCADDY_VERSION}/xcaddy_${XCADDY_VERSION}_linux_armv6.tar.gz | tar -xvz -C /tmp && \
+  /tmp/xcaddy build v${CADDY_VERSION} \
+    --with github.com/ggicci/caddy-jwt@${JWT_VERSION} \
+    --with magnax.ca/caddy/gopkg@${GOPKG_VERSION}
+
+FROM ghcr.io/dockhippie/alpine:latest-arm@sha256:b4b521c8229a803f530feb976bc7d46f9a63ed7050d320af5d9ea1f910dab022
+
+EXPOSE 8080
+
+WORKDIR /srv/www
+CMD ["/usr/bin/container"]
+
+RUN apk update && \
+  apk upgrade && \
+  mkdir -p /home/caddy/.config/caddy && \
+  groupadd -g 1000 caddy && \
+  useradd -u 1000 -d /home/caddy -g caddy -s /bin/bash -M caddy && \
+  apk add mailcap && \
+  rm -rf /var/cache/apk/*
+
+COPY --from=build /srv/app/caddy /usr/sbin/caddy
+COPY ./overlay /
