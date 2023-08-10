@@ -46,13 +46,28 @@
             ]
         },
         {
-            "description": "Disable for incompatible versions",
+            "description": "Disable incompatible caddy-jwt upgrades",
             "matchPackageNames": [
                 "ggicci/caddy-jwt"
             ],
             "matchFileNames": [
                 "v2.5/Dockerfile*",
                 "v2.6/Dockerfile*"
+            ],
+            "updateTypes": [
+                "major",
+                "minor",
+                "patch"
+            ],
+            "enabled": false
+        },
+        {
+            "description": "Disable incompatible golang upgrades",
+            "matchPackageNames": [
+                "ghcr.io/dockhippie/golang"
+            ],
+            "matchFileNames": [
+                "v2.5/Dockerfile*"
             ],
             "updateTypes": [
                 "major",
