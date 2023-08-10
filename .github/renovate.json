@@ -51,8 +51,8 @@
                 "ggicci/caddy-jwt"
             ],
             "matchFileNames": [
-                "v2.5/Dockerfile.*$",
-                "v2.6/Dockerfile.*$"
+                "v2.5/Dockerfile*",
+                "v2.6/Dockerfile*"
             ],
             "updateTypes": [
                 "major",
