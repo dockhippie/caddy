@@ -4,7 +4,7 @@ FROM ghcr.io/dockhippie/golang:1.21-arm64@sha256:c41ac0e92af723c4a76802c1508c66a
 ENV XCADDY_VERSION=0.3.5
 
 # renovate: datasource=github-tags depName=ggicci/caddy-jwt
-ENV JWT_VERSION=v0.9.4
+ENV JWT_VERSION=v0.9.5
 
 # renovate: datasource=github-tags depName=MagnaXSoftware/gopkg
 ENV GOPKG_VERSION=v1.2.0
