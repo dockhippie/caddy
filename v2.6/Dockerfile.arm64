@@ -1,4 +1,4 @@
-FROM ghcr.io/dockhippie/golang:1.20-arm64@sha256:8fa96910877047bb2b090176b865561ad53bcdac137641cfcb4356fe7166374d AS build
+FROM ghcr.io/dockhippie/golang:1.20-arm64@sha256:5a8a4b74b2264061784d614478bb83570cb47ef37928650c4c73244a763b2fea AS build
 
 # renovate: datasource=github-releases depName=caddyserver/caddy
 ENV CADDY_VERSION=2.6.4
@@ -17,7 +17,7 @@ RUN curl -sSLo - https://github.com/caddyserver/xcaddy/releases/download/v${XCAD
     --with github.com/ggicci/caddy-jwt@${JWT_VERSION} \
     --with magnax.ca/caddy/gopkg@${GOPKG_VERSION}
 
-FROM ghcr.io/dockhippie/alpine:latest-arm64@sha256:5ae8c36699199997c88697d3845a42869165de5b700d2e36a9f0143ef55119e0
+FROM ghcr.io/dockhippie/alpine:latest-arm64@sha256:6141946df1d4157c0b2496566da371a7c597794799fb4ec5c38a5297134c82dc
 
 EXPOSE 8080
 
