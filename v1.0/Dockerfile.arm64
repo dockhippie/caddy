@@ -1,4 +1,4 @@
-FROM ghcr.io/dockhippie/golang:1.23-arm64@sha256:91ca35cbe602c3ad32b350ee32f58be609981dca8501ef1c557dbc94110fe862 AS build
+FROM ghcr.io/dockhippie/golang:1.23-arm64@sha256:597f4c387343d64c8f895791a86ec506e2bfca429c36a74b9a3f88871131d57e AS build
 
 COPY ./build /
 
@@ -8,7 +8,7 @@ RUN cd /srv/app/caddy && \
   go get ./... && \
   go install
 
-FROM ghcr.io/dockhippie/alpine:latest-arm64@sha256:e154e249777f96dffd333fcf333845333ac6087a02a7a0a2d163b0d7c6e3d8ff
+FROM ghcr.io/dockhippie/alpine:latest-arm64@sha256:f8160544a697b291e7399c65630465247bd673a218d90a9edae343965bc43c51
 
 EXPOSE 8080
 
