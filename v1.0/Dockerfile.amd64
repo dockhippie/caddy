@@ -8,7 +8,7 @@ RUN cd /srv/app/caddy && \
   go get ./... && \
   go install
 
-FROM ghcr.io/dockhippie/alpine:latest-amd6
+FROM ghcr.io/dockhippie/alpine:latest-amd64
 
 EXPOSE 8080
 
