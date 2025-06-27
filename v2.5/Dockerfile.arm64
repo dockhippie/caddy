@@ -12,10 +12,14 @@ ENV JWT_VERSION=v0.8.0
 # renovate: datasource=github-tags depName=MagnaXSoftware/gopkg
 ENV GOPKG_VERSION=v1.2.0
 
+# renovate: datasource=github-tags depName=sagikazarmark/caddy-fs-s3
+ENV GOPKG_VERSION=v0.10.0
+
 RUN curl -sSLo - https://github.com/caddyserver/xcaddy/releases/download/v${XCADDY_VERSION}/xcaddy_${XCADDY_VERSION}_linux_arm64.tar.gz | tar -xvz -C /tmp && \
   /tmp/xcaddy build v${CADDY_VERSION} \
     --with github.com/ggicci/caddy-jwt@${JWT_VERSION} \
-    --with magnax.ca/caddy/gopkg@${GOPKG_VERSION}
+    --with magnax.ca/caddy/gopkg@${GOPKG_VERSION} \
+    --with github.com/sagikazarmark/caddy-fs-s3@${S3FS_VERSION}
 
 FROM ghcr.io/dockhippie/alpine:latest-arm64@sha256:9fdcdd3efe1852092b4fdd728a67620d7e3c4c93145d2508ed8637a28d87c054
 
