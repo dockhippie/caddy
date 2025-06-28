@@ -1,5 +1,8 @@
 FROM ghcr.io/dockhippie/golang:1.23-arm AS build
 
+# renovate: datasource=github-releases depName=caddyserver/caddy
+ENV CADDY_VERSION=2.10.0
+
 # renovate: datasource=github-releases depName=caddyserver/xcaddy
 ENV XCADDY_VERSION=0.4.4
 
@@ -13,7 +16,7 @@ ENV GOPKG_VERSION=v1.2.0
 ENV S3FS_VERSION=v0.10.0
 
 RUN curl -sSLo - https://github.com/caddyserver/xcaddy/releases/download/v${XCADDY_VERSION}/xcaddy_${XCADDY_VERSION}_linux_armv6.tar.gz | tar -xvz -C /tmp && \
-  /tmp/xcaddy build \
+  /tmp/xcaddy build v${CADDY_VERSION} \
     --with github.com/ggicci/caddy-jwt@${JWT_VERSION} \
     --with magnax.ca/caddy/gopkg@${GOPKG_VERSION} \
     --with github.com/sagikazarmark/caddy-fs-s3@${S3FS_VERSION}
