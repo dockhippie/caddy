@@ -1,4 +1,7 @@
-FROM ghcr.io/dockhippie/golang:1.23-arm AS build
+FROM ghcr.io/dockhippie/golang:1.23-arm64 AS build
+
+# renovate: datasource=github-releases depName=caddyserver/caddy
+ENV CADDY_VERSION=2.9.1
 
 # renovate: datasource=github-releases depName=caddyserver/xcaddy
 ENV XCADDY_VERSION=0.4.4
@@ -9,16 +12,12 @@ ENV JWT_VERSION=v1.1.0
 # renovate: datasource=github-tags depName=MagnaXSoftware/gopkg
 ENV GOPKG_VERSION=v1.2.0
 
-# renovate: datasource=github-tags depName=sagikazarmark/caddy-fs-s3
-ENV S3FS_VERSION=v0.10.0
-
-RUN curl -sSLo - https://github.com/caddyserver/xcaddy/releases/download/v${XCADDY_VERSION}/xcaddy_${XCADDY_VERSION}_linux_armv6.tar.gz | tar -xvz -C /tmp && \
-  /tmp/xcaddy build \
+RUN curl -sSLo - https://github.com/caddyserver/xcaddy/releases/download/v${XCADDY_VERSION}/xcaddy_${XCADDY_VERSION}_linux_arm64.tar.gz | tar -xvz -C /tmp && \
+  /tmp/xcaddy build v${CADDY_VERSION} \
     --with github.com/ggicci/caddy-jwt@${JWT_VERSION} \
-    --with magnax.ca/caddy/gopkg@${GOPKG_VERSION} \
-    --with github.com/sagikazarmark/caddy-fs-s3@${S3FS_VERSION}
+    --with magnax.ca/caddy/gopkg@${GOPKG_VERSION}
 
-FROM ghcr.io/dockhippie/alpine:latest-arm
+FROM ghcr.io/dockhippie/alpine:latest-arm64
 
 EXPOSE 8080
 
