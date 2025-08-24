@@ -17,7 +17,7 @@ RUN curl -sSLo - https://github.com/caddyserver/xcaddy/releases/download/v${XCAD
     --with github.com/ggicci/caddy-jwt@${JWT_VERSION} \
     --with magnax.ca/caddy/gopkg@${GOPKG_VERSION}
 
-FROM ghcr.io/dockhippie/alpine:latest-arm@sha256:4446cafb0699ad5e7c077042407254179f387a41259509c5b5e46db4ddf5e963
+FROM ghcr.io/dockhippie/alpine:latest-arm@sha256:6f1aa646116aec729fd18a0748ddd0d32861afb22fc81ded6cfce2f823d01611
 
 EXPOSE 8080
 
