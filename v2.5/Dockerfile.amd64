@@ -1,4 +1,4 @@
-FROM ghcr.io/dockhippie/golang:1.19-amd64@sha256:390ddf4a78318e4acf9b5e2ebcb38304e8130152623a51f86076076cfe6d7294 AS build
+FROM ghcr.io/dockhippie/golang:1.19-amd64@sha256:a3c45fddbe4abb70347f064668d0abe4e04d9781610073efd2bb8bd68e75c97c AS build
 
 # renovate: datasource=github-releases depName=caddyserver/caddy
 ENV CADDY_VERSION=2.5.2
