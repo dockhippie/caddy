@@ -52,7 +52,10 @@
             ],
             "matchFileNames": [
                 "v2.5/Dockerfile*",
-                "v2.6/Dockerfile*"
+                "v2.6/Dockerfile*",
+                "v2.7/Dockerfile*",
+                "v2.8/Dockerfile*",
+                "v2.9/Dockerfile*"
             ],
             "matchUpdateTypes": [
                 "major",
@@ -68,7 +71,8 @@
             ],
             "matchFileNames": [
                 "v2.5/Dockerfile*",
-                "v2.6/Dockerfile*"
+                "v2.6/Dockerfile*",
+                "v2.7/Dockerfile*"
             ],
             "matchUpdateTypes": [
                 "major",
