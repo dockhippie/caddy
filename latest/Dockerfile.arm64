@@ -1,4 +1,4 @@
-FROM ghcr.io/dockhippie/golang:1.23-arm64@sha256:cbe0ec69faeac0c8a5953d8a3ab376fa8f7d517b4e8ab5ca8b6ceace325452cc AS build
+FROM ghcr.io/dockhippie/golang:1.23-arm64@sha256:64a7e2fa5f14da63424f502e289193c9bf8e8ebdabced95856e401bcc00d3d6c AS build
 
 # renovate: datasource=github-releases depName=caddyserver/xcaddy
 ENV XCADDY_VERSION=0.4.5
