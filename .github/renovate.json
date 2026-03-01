@@ -46,6 +46,25 @@
             ]
         },
         {
+            "description": "Disable incompatible gopkg upgrades",
+            "matchPackageNames": [
+                "magnaxsoftware/gopkg"
+            ],
+            "matchFileNames": [
+                "v2.5/Dockerfile*",
+                "v2.6/Dockerfile*",
+                "v2.7/Dockerfile*",
+                "v2.8/Dockerfile*",
+                "v2.9/Dockerfile*"
+            ],
+            "matchUpdateTypes": [
+                "major",
+                "minor",
+                "patch"
+            ],
+            "enabled": false
+        },
+        {
             "description": "Disable incompatible caddy-jwt upgrades",
             "matchPackageNames": [
                 "ggicci/caddy-jwt"
