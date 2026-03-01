@@ -7,7 +7,7 @@ ENV XCADDY_VERSION=0.4.5
 ENV JWT_VERSION=v1.1.1
 
 # renovate: datasource=github-tags depName=MagnaXSoftware/gopkg
-ENV GOPKG_VERSION=v1.2.0
+ENV GOPKG_VERSION=v1.3.1
 
 # renovate: datasource=github-tags depName=sagikazarmark/caddy-fs-s3
 ENV S3FS_VERSION=v0.12.0
