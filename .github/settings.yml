@@ -1,7 +1,7 @@
 ---
 repository:
   name: caddy
-  description: Docker images for caddy
+  description: Docker images for Caddy
   topics: docker, image
 
   private: false
