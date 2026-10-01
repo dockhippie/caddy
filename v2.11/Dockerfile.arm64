@@ -1,0 +1,44 @@
+FROM ghcr.io/dockhippie/golang:1.27-arm64@sha256:c549ccaaf3e778503b873312373200e952f1d93c1751a28aac52832694bd937b AS build
+
+# renovate: datasource=github-releases depName=caddyserver/caddy
+ENV CADDY_VERSION=2.11.6
+
+# renovate: datasource=github-releases depName=caddyserver/xcaddy
+ENV XCADDY_VERSION=0.4.7
+
+# renovate: datasource=github-tags depName=ggicci/caddy-jwt
+ENV JWT_VERSION=v1.4.0
+
+# renovate: datasource=github-tags depName=MagnaXSoftware/gopkg
+ENV GOPKG_VERSION=v1.3.1
+
+# renovate: datasource=github-tags depName=sagikazarmark/caddy-fs-s3
+ENV S3FS_VERSION=v0.12.0
+
+RUN curl -sSLo - https://github.com/caddyserver/xcaddy/releases/download/v${XCADDY_VERSION}/xcaddy_${XCADDY_VERSION}_linux_arm64.tar.gz | tar -xvz -C /tmp && \
+  /tmp/xcaddy build v${CADDY_VERSION} \
+    --with github.com/ggicci/caddy-jwt@${JWT_VERSION} \
+    --with magnax.ca/caddy/gopkg@${GOPKG_VERSION} \
+    --with github.com/sagikazarmark/caddy-fs-s3@${S3FS_VERSION}
+
+FROM ghcr.io/dockhippie/alpine:latest-arm64@sha256:e5b4890d8e6dfabdaece5ba52356e7e03699647badc1ff7a723faa1ad7eabb12
+
+EXPOSE 8080
+
+WORKDIR /srv/www
+CMD ["/usr/bin/container"]
+
+RUN apk update && \
+  apk upgrade && \
+  install -d -o 1000 -g 1000 /home/caddy/.config /home/caddy/.config/caddy /home/caddy/.local && \
+  groupadd -g 1000 caddy && \
+  useradd -u 1000 -d /home/caddy -g caddy -s /bin/bash -M caddy && \
+  apk add mailcap && \
+  rm -rf /var/cache/apk/*
+
+COPY --from=build /srv/app/caddy /usr/sbin/caddy
+COPY ./overlay /
+
+RUN find /etc/container.d /etc/entrypoint.d -type f -name \*.sh -exec sed -i 's/\r$//' {} +; \
+  sed -i 's/\r$//' /usr/bin/healthcheck /usr/bin/container && \
+  chmod +x /usr/bin/healthcheck /usr/bin/container /etc/container.d/*.sh /etc/entrypoint.d/*.sh
