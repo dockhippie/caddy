@@ -7,7 +7,11 @@ for FILE in $(find /etc/container.d -type f -iname \*.sh | sort); do
 done
 
 pushd ${CADDY_WEBROOT} >/dev/null
-    STARTCMD="su-exec caddy caddy run"
+    if [ "$(id -u)" -eq 0 ]; then
+        STARTCMD="su-exec caddy caddy run"
+    else
+        STARTCMD="caddy run"
+    fi
 
     [[ -n "${CADDY_ADAPTER}" ]] && STARTCMD="${STARTCMD} --adapter=${CADDY_ADAPTER}"
     [[ -n "${CADDY_CONFIG}" ]] && STARTCMD="${STARTCMD} --config=${CADDY_CONFIG}"

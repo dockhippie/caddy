@@ -30,7 +30,7 @@ CMD ["/usr/bin/container"]
 
 RUN apk update && \
   apk upgrade && \
-  mkdir -p /home/caddy/.config/caddy && \
+  install -d -o 1000 -g 1000 /home/caddy/.config /home/caddy/.config/caddy /home/caddy/.local && \
   groupadd -g 1000 caddy && \
   useradd -u 1000 -d /home/caddy -g caddy -s /bin/bash -M caddy && \
   apk add mailcap && \
