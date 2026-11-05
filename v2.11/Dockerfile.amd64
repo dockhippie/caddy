@@ -1,7 +1,7 @@
 FROM ghcr.io/dockhippie/golang:1.27-amd64@sha256:fb1c7fa02025bdd1d39b56cb2ae1f0b99732d9a645bcc95064d9b03425bf0c95 AS build
 
 # renovate: datasource=github-releases depName=caddyserver/caddy
-ENV CADDY_VERSION=2.11.8
+ENV CADDY_VERSION=2.11.9
 
 # renovate: datasource=github-releases depName=caddyserver/xcaddy
 ENV XCADDY_VERSION=0.4.7
